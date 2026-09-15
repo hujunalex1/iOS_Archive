@@ -1,0 +1,614 @@
+{
+  "generatedAt": "2026-09-15T02:03:32.000Z",
+  "sources": {
+    "rss": "https://developer.apple.com/news/releases/rss/releases.rss",
+    "gdmf": "https://gdmf.apple.com/v2/pmv",
+    "devices": "https://api.ipsw.me/v4/devices",
+    "kev": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
+  },
+  "latest": {
+    "version": "27.0",
+    "build": "24A437",
+    "date": "2026-09-14",
+    "deviceCount": 34,
+    "branchCount": 6
+  },
+  "branches": [
+    {
+      "version": "27.0",
+      "build": "24A437",
+      "builds": [
+        "24A437",
+        "24A6437",
+        "24A9437"
+      ],
+      "date": "2026-09-14",
+      "count": 34,
+      "devices": [
+        {
+          "id": "iPhone12,1",
+          "name": "iPhone 11"
+        },
+        {
+          "id": "iPhone12,3",
+          "name": "iPhone 11 Pro"
+        },
+        {
+          "id": "iPhone12,5",
+          "name": "iPhone 11 Pro Max"
+        },
+        {
+          "id": "iPhone13,2",
+          "name": "iPhone 12"
+        },
+        {
+          "id": "iPhone13,1",
+          "name": "iPhone 12 mini"
+        },
+        {
+          "id": "iPhone13,3",
+          "name": "iPhone 12 Pro"
+        },
+        {
+          "id": "iPhone13,4",
+          "name": "iPhone 12 Pro Max"
+        },
+        {
+          "id": "iPhone14,5",
+          "name": "iPhone 13"
+        },
+        {
+          "id": "iPhone14,4",
+          "name": "iPhone 13 mini"
+        },
+        {
+          "id": "iPhone14,2",
+          "name": "iPhone 13 Pro"
+        },
+        {
+          "id": "iPhone14,3",
+          "name": "iPhone 13 Pro Max"
+        },
+        {
+          "id": "iPhone14,7",
+          "name": "iPhone 14"
+        },
+        {
+          "id": "iPhone14,8",
+          "name": "iPhone 14 Plus"
+        },
+        {
+          "id": "iPhone15,2",
+          "name": "iPhone 14 Pro"
+        },
+        {
+          "id": "iPhone15,3",
+          "name": "iPhone 14 Pro Max"
+        },
+        {
+          "id": "iPhone15,4",
+          "name": "iPhone 15"
+        },
+        {
+          "id": "iPhone15,5",
+          "name": "iPhone 15 Plus"
+        },
+        {
+          "id": "iPhone16,1",
+          "name": "iPhone 15 Pro"
+        },
+        {
+          "id": "iPhone16,2",
+          "name": "iPhone 15 Pro Max"
+        },
+        {
+          "id": "iPhone17,3",
+          "name": "iPhone 16"
+        },
+        {
+          "id": "iPhone17,4",
+          "name": "iPhone 16 Plus"
+        },
+        {
+          "id": "iPhone17,1",
+          "name": "iPhone 16 Pro"
+        },
+        {
+          "id": "iPhone17,2",
+          "name": "iPhone 16 Pro Max"
+        },
+        {
+          "id": "iPhone17,5",
+          "name": "iPhone 16e"
+        },
+        {
+          "id": "iPhone18,3",
+          "name": "iPhone 17"
+        },
+        {
+          "id": "iPhone18,1",
+          "name": "iPhone 17 Pro"
+        },
+        {
+          "id": "iPhone18,2",
+          "name": "iPhone 17 Pro Max"
+        },
+        {
+          "id": "iPhone18,5",
+          "name": "iPhone 17e"
+        },
+        {
+          "id": "iPhone19,2",
+          "name": "iPhone 18 Pro"
+        },
+        {
+          "id": "iPhone19,7",
+          "name": "iPhone 18 Pro Max"
+        },
+        {
+          "id": "iPhone19,3",
+          "name": "iPhone 18 Pro Max (U.S.)"
+        },
+        {
+          "id": "iPhone18,4",
+          "name": "iPhone Air"
+        },
+        {
+          "id": "iPhone12,8",
+          "name": "iPhone SE (2020)"
+        },
+        {
+          "id": "iPhone14,6",
+          "name": "iPhone SE (3rd generation)"
+        }
+      ],
+      "models": [
+        "iPhone 11",
+        "iPhone 11 Pro",
+        "iPhone 11 Pro Max",
+        "iPhone 12",
+        "iPhone 12 mini",
+        "iPhone 12 Pro",
+        "iPhone 12 Pro Max",
+        "iPhone 13",
+        "iPhone 13 mini",
+        "iPhone 13 Pro",
+        "iPhone 13 Pro Max",
+        "iPhone 14",
+        "iPhone 14 Plus",
+        "iPhone 14 Pro",
+        "iPhone 14 Pro Max",
+        "iPhone 15",
+        "iPhone 15 Plus",
+        "iPhone 15 Pro",
+        "iPhone 15 Pro Max",
+        "iPhone 16",
+        "iPhone 16 Plus",
+        "iPhone 16 Pro",
+        "iPhone 16 Pro Max",
+        "iPhone 16e",
+        "iPhone 17",
+        "iPhone 17 Pro",
+        "iPhone 17 Pro Max",
+        "iPhone 17e",
+        "iPhone 18 Pro",
+        "iPhone 18 Pro Max",
+        "iPhone 18 Pro Max (U.S.)",
+        "iPhone Air",
+        "iPhone SE (2020)",
+        "iPhone SE (3rd generation)"
+      ]
+    },
+    {
+      "version": "26.7",
+      "build": "23H6024",
+      "builds": [
+        "23H24",
+        "23H6024"
+      ],
+      "date": null,
+      "count": 31,
+      "devices": [
+        {
+          "id": "iPhone12,1",
+          "name": "iPhone 11"
+        },
+        {
+          "id": "iPhone12,3",
+          "name": "iPhone 11 Pro"
+        },
+        {
+          "id": "iPhone12,5",
+          "name": "iPhone 11 Pro Max"
+        },
+        {
+          "id": "iPhone13,2",
+          "name": "iPhone 12"
+        },
+        {
+          "id": "iPhone13,1",
+          "name": "iPhone 12 mini"
+        },
+        {
+          "id": "iPhone13,3",
+          "name": "iPhone 12 Pro"
+        },
+        {
+          "id": "iPhone13,4",
+          "name": "iPhone 12 Pro Max"
+        },
+        {
+          "id": "iPhone14,5",
+          "name": "iPhone 13"
+        },
+        {
+          "id": "iPhone14,4",
+          "name": "iPhone 13 mini"
+        },
+        {
+          "id": "iPhone14,2",
+          "name": "iPhone 13 Pro"
+        },
+        {
+          "id": "iPhone14,3",
+          "name": "iPhone 13 Pro Max"
+        },
+        {
+          "id": "iPhone14,7",
+          "name": "iPhone 14"
+        },
+        {
+          "id": "iPhone14,8",
+          "name": "iPhone 14 Plus"
+        },
+        {
+          "id": "iPhone15,2",
+          "name": "iPhone 14 Pro"
+        },
+        {
+          "id": "iPhone15,3",
+          "name": "iPhone 14 Pro Max"
+        },
+        {
+          "id": "iPhone15,4",
+          "name": "iPhone 15"
+        },
+        {
+          "id": "iPhone15,5",
+          "name": "iPhone 15 Plus"
+        },
+        {
+          "id": "iPhone16,1",
+          "name": "iPhone 15 Pro"
+        },
+        {
+          "id": "iPhone16,2",
+          "name": "iPhone 15 Pro Max"
+        },
+        {
+          "id": "iPhone17,3",
+          "name": "iPhone 16"
+        },
+        {
+          "id": "iPhone17,4",
+          "name": "iPhone 16 Plus"
+        },
+        {
+          "id": "iPhone17,1",
+          "name": "iPhone 16 Pro"
+        },
+        {
+          "id": "iPhone17,2",
+          "name": "iPhone 16 Pro Max"
+        },
+        {
+          "id": "iPhone17,5",
+          "name": "iPhone 16e"
+        },
+        {
+          "id": "iPhone18,3",
+          "name": "iPhone 17"
+        },
+        {
+          "id": "iPhone18,1",
+          "name": "iPhone 17 Pro"
+        },
+        {
+          "id": "iPhone18,2",
+          "name": "iPhone 17 Pro Max"
+        },
+        {
+          "id": "iPhone18,5",
+          "name": "iPhone 17e"
+        },
+        {
+          "id": "iPhone18,4",
+          "name": "iPhone Air"
+        },
+        {
+          "id": "iPhone12,8",
+          "name": "iPhone SE (2020)"
+        },
+        {
+          "id": "iPhone14,6",
+          "name": "iPhone SE (3rd generation)"
+        }
+      ],
+      "models": [
+        "iPhone 11",
+        "iPhone 11 Pro",
+        "iPhone 11 Pro Max",
+        "iPhone 12",
+        "iPhone 12 mini",
+        "iPhone 12 Pro",
+        "iPhone 12 Pro Max",
+        "iPhone 13",
+        "iPhone 13 mini",
+        "iPhone 13 Pro",
+        "iPhone 13 Pro Max",
+        "iPhone 14",
+        "iPhone 14 Plus",
+        "iPhone 14 Pro",
+        "iPhone 14 Pro Max",
+        "iPhone 15",
+        "iPhone 15 Plus",
+        "iPhone 15 Pro",
+        "iPhone 15 Pro Max",
+        "iPhone 16",
+        "iPhone 16 Plus",
+        "iPhone 16 Pro",
+        "iPhone 16 Pro Max",
+        "iPhone 16e",
+        "iPhone 17",
+        "iPhone 17 Pro",
+        "iPhone 17 Pro Max",
+        "iPhone 17e",
+        "iPhone Air",
+        "iPhone SE (2020)",
+        "iPhone SE (3rd generation)"
+      ]
+    },
+    {
+      "version": "18.7.10",
+      "build": "22H374",
+      "builds": [
+        "22H374"
+      ],
+      "date": "2026-08-17",
+      "count": 4,
+      "devices": [
+        {
+          "id": "iPhone11,8",
+          "name": "iPhone XR"
+        },
+        {
+          "id": "iPhone11,2",
+          "name": "iPhone XS"
+        },
+        {
+          "id": "iPhone11,6",
+          "name": "iPhone XS Max"
+        },
+        {
+          "id": "iPhone11,4",
+          "name": "iPhone XS Max (China)"
+        }
+      ],
+      "models": [
+        "iPhone XR",
+        "iPhone XS",
+        "iPhone XS Max",
+        "iPhone XS Max (China)"
+      ]
+    },
+    {
+      "version": "16.7.16",
+      "build": "20H392",
+      "builds": [
+        "20H392",
+        "20H6392"
+      ],
+      "date": "2026-05-11",
+      "count": 3,
+      "devices": [
+        {
+          "id": "iPhone10,1",
+          "name": "iPhone 8 (Global)"
+        },
+        {
+          "id": "iPhone10,4",
+          "name": "iPhone 8 (GSM)"
+        },
+        {
+          "id": "iPhone10,2",
+          "name": "iPhone 8 Plus (Global)"
+        },
+        {
+          "id": "iPhone10,5",
+          "name": "iPhone 8 Plus (GSM)"
+        },
+        {
+          "id": "iPhone10,3",
+          "name": "iPhone X (Global)"
+        },
+        {
+          "id": "iPhone10,6",
+          "name": "iPhone X (GSM)"
+        }
+      ],
+      "models": [
+        "iPhone 8",
+        "iPhone 8 Plus",
+        "iPhone X"
+      ]
+    },
+    {
+      "version": "15.8.8",
+      "build": "19H422",
+      "builds": [
+        "19H422",
+        "19H6422"
+      ],
+      "date": "2026-05-11",
+      "count": 5,
+      "devices": [
+        {
+          "id": "iPhone8,1",
+          "name": "iPhone 6s"
+        },
+        {
+          "id": "iPhone8,2",
+          "name": "iPhone 6s+"
+        },
+        {
+          "id": "iPhone9,1",
+          "name": "iPhone 7 (Global)"
+        },
+        {
+          "id": "iPhone9,3",
+          "name": "iPhone 7 (GSM)"
+        },
+        {
+          "id": "iPhone9,2",
+          "name": "iPhone 7 Plus (Global)"
+        },
+        {
+          "id": "iPhone9,4",
+          "name": "iPhone 7 Plus (GSM)"
+        },
+        {
+          "id": "iPhone8,4",
+          "name": "iPhone SE"
+        }
+      ],
+      "models": [
+        "iPhone 6s",
+        "iPhone 6s+",
+        "iPhone 7",
+        "iPhone 7 Plus",
+        "iPhone SE"
+      ]
+    },
+    {
+      "version": "12.5.8",
+      "build": "16H88",
+      "builds": [
+        "16H6088",
+        "16H88"
+      ],
+      "date": null,
+      "count": 3,
+      "devices": [
+        {
+          "id": "iPhone6,2",
+          "name": "iPhone 5s (Global)"
+        },
+        {
+          "id": "iPhone6,1",
+          "name": "iPhone 5s (GSM)"
+        },
+        {
+          "id": "iPhone7,2",
+          "name": "iPhone 6"
+        },
+        {
+          "id": "iPhone7,1",
+          "name": "iPhone 6+"
+        }
+      ],
+      "models": [
+        "iPhone 5s",
+        "iPhone 6",
+        "iPhone 6+"
+      ]
+    }
+  ],
+  "dropped": [
+    {
+      "version": "18.7.10",
+      "models": [
+        "iPhone XR",
+        "iPhone XS",
+        "iPhone XS Max",
+        "iPhone XS Max (China)"
+      ]
+    },
+    {
+      "version": "16.7.16",
+      "models": [
+        "iPhone 8",
+        "iPhone 8 Plus",
+        "iPhone X"
+      ]
+    },
+    {
+      "version": "15.8.8",
+      "models": [
+        "iPhone 6s",
+        "iPhone 6s+",
+        "iPhone 7",
+        "iPhone 7 Plus",
+        "iPhone SE"
+      ]
+    },
+    {
+      "version": "12.5.8",
+      "models": [
+        "iPhone 5s",
+        "iPhone 6",
+        "iPhone 6+"
+      ]
+    }
+  ],
+  "releases": [
+    {
+      "version": "27.0",
+      "build": "24A437",
+      "date": "2026-09-14",
+      "kind": "major"
+    },
+    {
+      "version": "26.6.2",
+      "build": "23G90",
+      "date": "2026-09-08",
+      "kind": "patch"
+    },
+    {
+      "version": "18.7.10",
+      "build": "22H374",
+      "date": "2026-08-17",
+      "kind": "patch"
+    },
+    {
+      "version": "16.7.16",
+      "build": "20H392",
+      "date": "2026-05-11",
+      "kind": "patch"
+    },
+    {
+      "version": "15.8.8",
+      "build": "19H422",
+      "date": "2026-05-11",
+      "kind": "patch"
+    }
+  ],
+  "kev": {
+    "catalogVersion": "2026.09.14",
+    "catalogDate": "2026-09-14",
+    "windowDays": 90,
+    "totalApple": 94,
+    "recent": [
+      {
+        "cve": "CVE-2026-65400",
+        "product": "macOS",
+        "dateAdded": "2026-08-18",
+        "ransomware": false
+      }
+    ],
+    "caveat": "KEV 不标注修复版本，故不能归因到具体 iOS 版本"
+  },
+  "unavailable": {
+    "fixes": "Apple 安全公告页为 JS 渲染，无公开 JSON 接口，无法取得单版本 CVE 数",
+    "size": "更新包体积不在任何公开 feed 中"
+  }
+}

@@ -1,0 +1,49 @@
+name: 抓取 iOS 版本数据
+
+on:
+  schedule:
+    # 每 30 分钟一次，避开整点（GitHub 的定时任务在整点前后最堵）
+    - cron: '7,37 * * * *'
+  workflow_dispatch:      # 也可以手动跑
+
+permissions:
+  contents: write
+
+concurrency:
+  group: fetch-ios-data
+  cancel-in-progress: false
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      # 零依赖：不用 npm install
+      - name: 抓取、真实归纳与构建
+        env:
+          # 在仓库 Settings › Variables 里设 SITE_URL，用于 feed.xml / .ics 里的绝对链接
+          SITE_URL: ${{ vars.SITE_URL }}
+          # 在仓库 Settings › Secrets 里设 GEMINI_API_KEY，用于新版本发布时全自动检索 Apple 官方发版公告并真实归纳
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          node scripts/fetch-data.mjs
+          node scripts/auto-summarize.mjs
+          node scripts/build-page.mjs
+
+      - name: 只在数据真的变了时提交
+        run: |
+          if git diff --quiet -- data.json data/ios-history.json feed.xml ios-updates.ics index.html; then
+            echo "数据无变化，跳过提交"
+            exit 0
+          fi
+          VER=$(node -p "require('./data.json').latest.version")
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data.json data/ios-history.json feed.xml ios-updates.ics index.html
+          git commit -m "data: 自动更新至 iOS ${VER}"
+          git push
