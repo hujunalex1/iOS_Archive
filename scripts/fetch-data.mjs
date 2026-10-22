@@ -34,17 +34,32 @@ const KEV_WINDOW_DAYS = 90;
 // 这些标识符前缀属于 iPhone；gdmf 的 iOS 键同时涵盖 iPad/iPod/AppleTV/HomePod
 const IPHONE = 'iPhone';
 
-async function get(url, { json = false, timeout = 30000 } = {}) {
-  const ctl = new AbortController();
-  const timer = setTimeout(() => ctl.abort(), timeout);
-  try {
-    // 不发送 Origin 头 —— gdmf 见到 Origin 直接 403
-    const res = await fetch(url, { headers: { 'User-Agent': UA }, signal: ctl.signal });
-    if (!res.ok) throw new Error(`${res.status} ${res.statusText} — ${url}`);
-    return json ? await res.json() : await res.text();
-  } finally {
-    clearTimeout(timer);
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+
+async function get(url, { json = false, timeout = 30000, retries = 3 } = {}) {
+  let lastErr;
+  for (let attempt = 1; attempt <= retries; attempt++) {
+    const ctl = new AbortController();
+    const timer = setTimeout(() => ctl.abort(), timeout);
+    try {
+      // 不发送 Origin 头 —— gdmf 见到 Origin 直接 403
+      const res = await fetch(url, { headers: { 'User-Agent': UA }, signal: ctl.signal });
+      if (!res.ok) throw new Error(`${res.status} ${res.statusText} — ${url}`);
+      return json ? await res.json() : await res.text();
+    } catch (e) {
+      // 把 cause（UND_ERR_SOCKET / ECONNRESET 等）带进错误信息，
+      // 否则日志里只有一句 fetch failed，根本看不出死在哪个源、为什么死
+      const cause = e.cause ? ` [cause: ${e.cause.code || e.cause.message || e.cause}]` : '';
+      lastErr = new Error(`${e.message} — ${url}${cause}`);
+      if (attempt < retries) {
+        console.error(`⚠️ 第 ${attempt}/${retries} 次抓取失败: ${lastErr.message}，${attempt * 2}s 后重试…`);
+        await sleep(attempt * 2000);
+      }
+    } finally {
+      clearTimeout(timer);
+    }
   }
+  throw lastErr;
 }
 
 const vkey = v => {
@@ -256,31 +271,78 @@ async function main() {
   const siteUrl = process.env.SITE_URL || 'https://example.com/';
   console.log('抓取中…');
 
-  const [rssXml, gdmf, devList, kev] = await Promise.all([
-    get(SRC.rss),
-    get(SRC.gdmf, { json: true }),
-    get(SRC.devices, { json: true }),
-    get(SRC.kev, { json: true }),
+  // 上一份 data.json 是降级保底：某个源抓不到时沿用它里面对应的数据，
+  // 而不是像以前那样 Promise.all 里一个失败就整体退出、白白丢掉其余源的更新。
+  // （背景：gdmf 在部分网络下连接会被直接断开，GitHub Actions 上曾因此长期全灭。）
+  let prev = null;
+  try { prev = JSON.parse(await readFile('data.json', 'utf8')); } catch { /* 首次运行没有旧数据 */ }
+  const degraded = [];
+  const attempt = async (name, fn) => {
+    try { return await fn(); }
+    catch (e) { console.error(`⚠️ 数据源 ${name} 抓取失败：${e.message}`); degraded.push(name); return null; }
+  };
+
+  const [rssXml, gdmf, devList, kevRaw] = await Promise.all([
+    attempt('rss', () => get(SRC.rss)),
+    attempt('gdmf', () => get(SRC.gdmf, { json: true })),
+    attempt('devices', () => get(SRC.devices, { json: true })),
+    attempt('kev', () => get(SRC.kev, { json: true })),
   ]);
 
-  const nameOf = new Map(devList.map(d => [d.identifier, d.name]));
+  // 机型名映射：devices 抓不到时，从旧数据 branches 里把 id → name 捡回来
+  const nameOf = new Map();
+  if (devList) for (const d of devList) nameOf.set(d.identifier, d.name);
+  else if (prev?.branches) for (const b of prev.branches) for (const d of b.devices || []) nameOf.set(d.id, d.name);
 
-  const iosReleases = parseRss(rssXml)
-    .filter(r => r.platform === 'iOS')
-    .sort((a, b) => (b.date || '').localeCompare(a.date || '') || cmpVer(b.version, a.version))
-    .map(r => ({ ...r, kind: kindOf(r.version), platform: undefined }));
+  let iosReleases;
+  if (rssXml) {
+    iosReleases = parseRss(rssXml)
+      .filter(r => r.platform === 'iOS')
+      .sort((a, b) => (b.date || '').localeCompare(a.date || '') || cmpVer(b.version, a.version))
+      .map(r => ({ ...r, kind: kindOf(r.version), platform: undefined }));
+  } else if (prev?.releases?.length) {
+    console.error('↩️ RSS 不可用，沿用上一份 data.json 的 releases');
+    iosReleases = prev.releases;
+  } else {
+    throw new Error('RSS 抓取失败且没有旧 data.json 可保底，无法继续');
+  }
 
   const rssBy = new Map(iosReleases.map(r => [r.version, r]));
-  const branches = buildBranches(gdmf, nameOf, rssBy);
-  const dropped = deriveDropped(branches);
+
+  let branches, dropped;
+  const freshBranches = gdmf ? buildBranches(gdmf, nameOf, rssBy) : [];
+  if (freshBranches.length) {
+    branches = freshBranches;
+    dropped = deriveDropped(branches);
+  } else {
+    if (!degraded.includes('gdmf')) degraded.push('gdmf');
+    if (prev?.branches?.length) {
+      console.error('↩️ gdmf 不可用（或未返回 iPhone 分支），沿用上一份 data.json 的 branches / dropped，本次只更新其余数据源');
+      branches = prev.branches;
+      dropped = prev.dropped || [];
+    } else {
+      throw new Error('gdmf 未返回任何 iPhone 可安装分支，且没有旧 data.json 可保底 —— 数据源结构可能已变，请检查');
+    }
+  }
   const today = new Date();
   const newest = branches[0];
 
-  if (!newest) throw new Error('gdmf 未返回任何 iPhone 可安装分支 —— 数据源结构可能已变，请检查');
+  // KEV 抓不到时沿用旧的 kev 汇总（它是处理后的结构，不能再过一遍 buildKev）
+  let kevOut;
+  if (kevRaw) kevOut = buildKev(kevRaw, today);
+  else if (prev?.kev) { console.error('↩️ KEV 不可用，沿用上一份 data.json 的 kev'); kevOut = prev.kev; }
+  else kevOut = { catalogVersion: null, catalogDate: null, windowDays: KEV_WINDOW_DAYS, totalApple: 0, recent: [], caveat: 'KEV 本次抓取失败且无旧数据' };
 
   const data = {
     generatedAt: today.toISOString(),
     sources: SRC,
+    ...(degraded.length ? {
+      degraded: {
+        sources: degraded,
+        at: today.toISOString(),
+        note: '以上数据源本次抓取失败，对应部分沿用上一份 data.json，其余部分为本次实时抓取',
+      },
+    } : {}),
     latest: {
       version: newest.version,
       build: newest.build,
@@ -291,7 +353,7 @@ async function main() {
     branches,
     dropped,
     releases: iosReleases,
-    kev: buildKev(kev, today),
+    kev: kevOut,
     unavailable: {
       fixes: 'Apple 安全公告页为 JS 渲染，无公开 JSON 接口，无法取得单版本 CVE 数',
       size: '更新包体积不在任何公开 feed 中',
@@ -307,6 +369,7 @@ async function main() {
   console.log(`✓ 最新 iOS ${newest.version} (${newest.build}) ${newest.date} — 支持 ${newest.count} 款 iPhone`);
   console.log(`✓ ${branches.length} 条可安装分支 · ${dropped.reduce((n, g) => n + g.models.length, 0)} 款停在老分支 · RSS ${iosReleases.length} 条 · KEV 近 ${KEV_WINDOW_DAYS} 天 Apple ${data.kev.recent.length} 条`);
   console.log(`✓ 写出 data.json / feed.xml / ios-updates.ics${embedded ? ' · 已更新 index.html 内嵌快照' : ''}`);
+  if (degraded.length) console.log(`⚠️ 本次为降级运行：${degraded.join(', ')} 未抓到，对应数据沿用旧版（旧版 generatedAt: ${prev?.generatedAt || '未知'}）`);
 }
 
-main().catch(e => { console.error('✗ 抓取失败:', e.message); process.exit(1); });
+main().catch(e => { console.error('✗ 抓取失败:', e.message, e.cause ? `(cause: ${e.cause.code || e.cause.message})` : ''); process.exit(1); });
