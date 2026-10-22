@@ -2745,12 +2745,19 @@ a:hover { text-decoration: underline; }
 <script>
 /* SNAPSHOT:BEGIN —— 由 scripts/fetch-data.mjs 自动写入，请勿手改 */
 const SNAPSHOT = {
-  "generatedAt": "2026-09-15T02:03:32.000Z",
+  "generatedAt": "2026-10-22T09:40:02.293Z",
   "sources": {
     "rss": "https://developer.apple.com/news/releases/rss/releases.rss",
     "gdmf": "https://gdmf.apple.com/v2/pmv",
     "devices": "https://api.ipsw.me/v4/devices",
     "kev": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
+  },
+  "degraded": {
+    "sources": [
+      "gdmf"
+    ],
+    "at": "2026-10-22T09:40:02.293Z",
+    "note": "以上数据源本次抓取失败，对应部分沿用上一份 data.json，其余部分为本次实时抓取"
   },
   "latest": {
     "version": "27.0",
@@ -3308,10 +3315,10 @@ const SNAPSHOT = {
   ],
   "releases": [
     {
-      "version": "27.0",
-      "build": "24A437",
-      "date": "2026-09-14",
-      "kind": "major"
+      "version": "27.0.1",
+      "build": "24A446",
+      "date": "2026-09-28",
+      "kind": "patch"
     },
     {
       "version": "26.6.2",
@@ -3339,11 +3346,17 @@ const SNAPSHOT = {
     }
   ],
   "kev": {
-    "catalogVersion": "2026.09.14",
-    "catalogDate": "2026-09-14",
+    "catalogVersion": "2026.10.21",
+    "catalogDate": "2026-10-21",
     "windowDays": 90,
-    "totalApple": 94,
+    "totalApple": 95,
     "recent": [
+      {
+        "cve": "CVE-2026-86950",
+        "product": "Multiple Products",
+        "dateAdded": "2026-09-29",
+        "ransomware": false
+      },
       {
         "cve": "CVE-2026-65400",
         "product": "macOS",

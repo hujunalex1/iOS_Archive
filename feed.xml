@@ -3,15 +3,15 @@
   <title>iOS 更新雷达</title>
   <link href="https://example.com/"/>
   <link rel="self" href="https://example.com/feed.xml"/>
-  <updated>2026-09-15T00:00:00Z</updated>
+  <updated>2026-10-22T00:00:00Z</updated>
   <id>urn:ios-radar:feed</id>
   <author><name>iOS 更新雷达</name></author>
   <entry>
-    <title>iOS 27.0 (24A437)</title>
-    <id>urn:ios-radar:24A437</id>
-    <updated>2026-09-14T00:00:00Z</updated>
+    <title>iOS 27.0.1 (24A446)</title>
+    <id>urn:ios-radar:24A446</id>
+    <updated>2026-09-28T00:00:00Z</updated>
     <link href="https://example.com/"/>
-    <summary>iOS 27.0（build 24A437）于 2026-09-14 发布。</summary>
+    <summary>iOS 27.0.1（build 24A446）于 2026-09-28 发布。</summary>
   </entry>
   <entry>
     <title>iOS 26.6.2 (23G90)</title>
