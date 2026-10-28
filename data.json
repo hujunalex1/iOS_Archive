@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-28T17:20:47.432Z",
+  "generatedAt": "2026-10-28T21:52:58.129Z",
   "sources": {
     "rss": "https://developer.apple.com/news/releases/rss/releases.rss",
     "gdmf": "https://gdmf.apple.com/v2/pmv",
@@ -10,7 +10,7 @@
     "sources": [
       "gdmf"
     ],
-    "at": "2026-10-28T17:20:47.432Z",
+    "at": "2026-10-28T21:52:58.129Z",
     "note": "以上数据源本次抓取失败，对应部分沿用上一份 data.json，其余部分为本次实时抓取"
   },
   "latest": {
@@ -612,8 +612,8 @@
     }
   ],
   "kev": {
-    "catalogVersion": "2026.10.27",
-    "catalogDate": "2026-10-27",
+    "catalogVersion": "2026.10.28",
+    "catalogDate": "2026-10-28",
     "windowDays": 90,
     "totalApple": 95,
     "recent": [
