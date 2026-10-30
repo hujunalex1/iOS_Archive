@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-30T18:48:32.737Z",
+  "generatedAt": "2026-10-30T22:55:42.302Z",
   "sources": {
     "rss": "https://developer.apple.com/news/releases/rss/releases.rss",
     "gdmf": "https://gdmf.apple.com/v2/pmv",
@@ -10,7 +10,7 @@
     "sources": [
       "gdmf"
     ],
-    "at": "2026-10-30T18:48:32.737Z",
+    "at": "2026-10-30T22:55:42.302Z",
     "note": "以上数据源本次抓取失败，对应部分沿用上一份 data.json，其余部分为本次实时抓取"
   },
   "latest": {
