@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-09T16:05:58.758Z",
+  "generatedAt": "2026-11-10T00:12:51.401Z",
   "sources": {
     "rss": "https://developer.apple.com/news/releases/rss/releases.rss",
     "gdmf": "https://gdmf.apple.com/v2/pmv",
@@ -10,7 +10,7 @@
     "sources": [
       "gdmf"
     ],
-    "at": "2026-11-09T16:05:58.758Z",
+    "at": "2026-11-10T00:12:51.401Z",
     "note": "以上数据源本次抓取失败，对应部分沿用上一份 data.json，其余部分为本次实时抓取"
   },
   "latest": {
@@ -569,21 +569,21 @@
   ],
   "releases": [
     {
-      "version": "27.2",
-      "build": "24B91020",
-      "date": "2026-10-26",
-      "kind": "minor"
+      "version": "27.2.1",
+      "build": "24B91034",
+      "date": "2026-11-09",
+      "kind": "patch"
     },
     {
-      "version": "27.2",
-      "build": "24B119",
-      "date": "2026-10-26",
-      "kind": "minor"
+      "version": "27.2.1",
+      "build": "24B156",
+      "date": "2026-11-09",
+      "kind": "patch"
     },
     {
-      "version": "18.7.11",
-      "build": "22H384",
-      "date": "2026-10-26",
+      "version": "18.7.12",
+      "build": "22H390",
+      "date": "2026-11-09",
       "kind": "patch"
     },
     {
@@ -612,8 +612,8 @@
     }
   ],
   "kev": {
-    "catalogVersion": "2026.11.06",
-    "catalogDate": "2026-11-06",
+    "catalogVersion": "2026.11.09",
+    "catalogDate": "2026-11-09",
     "windowDays": 90,
     "totalApple": 96,
     "recent": [

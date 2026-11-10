@@ -3,29 +3,29 @@
   <title>iOS 更新雷达</title>
   <link href="https://example.com/"/>
   <link rel="self" href="https://example.com/feed.xml"/>
-  <updated>2026-11-09T00:00:00Z</updated>
+  <updated>2026-11-10T00:00:00Z</updated>
   <id>urn:ios-radar:feed</id>
   <author><name>iOS 更新雷达</name></author>
   <entry>
-    <title>iOS 27.2 (24B91020)</title>
-    <id>urn:ios-radar:24B91020</id>
-    <updated>2026-10-26T00:00:00Z</updated>
+    <title>iOS 27.2.1 (24B91034)</title>
+    <id>urn:ios-radar:24B91034</id>
+    <updated>2026-11-09T00:00:00Z</updated>
     <link href="https://example.com/"/>
-    <summary>iOS 27.2（build 24B91020）于 2026-10-26 发布。</summary>
+    <summary>iOS 27.2.1（build 24B91034）于 2026-11-09 发布。</summary>
   </entry>
   <entry>
-    <title>iOS 27.2 (24B119)</title>
-    <id>urn:ios-radar:24B119</id>
-    <updated>2026-10-26T00:00:00Z</updated>
+    <title>iOS 27.2.1 (24B156)</title>
+    <id>urn:ios-radar:24B156</id>
+    <updated>2026-11-09T00:00:00Z</updated>
     <link href="https://example.com/"/>
-    <summary>iOS 27.2（build 24B119）于 2026-10-26 发布。</summary>
+    <summary>iOS 27.2.1（build 24B156）于 2026-11-09 发布。</summary>
   </entry>
   <entry>
-    <title>iOS 18.7.11 (22H384)</title>
-    <id>urn:ios-radar:22H384</id>
-    <updated>2026-10-26T00:00:00Z</updated>
+    <title>iOS 18.7.12 (22H390)</title>
+    <id>urn:ios-radar:22H390</id>
+    <updated>2026-11-09T00:00:00Z</updated>
     <link href="https://example.com/"/>
-    <summary>iOS 18.7.11（build 22H384）于 2026-10-26 发布。</summary>
+    <summary>iOS 18.7.12（build 22H390）于 2026-11-09 发布。</summary>
   </entry>
   <entry>
     <title>iOS 27.0.1 (24A446)</title>
